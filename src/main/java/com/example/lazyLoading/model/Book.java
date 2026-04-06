@@ -1,18 +1,18 @@
 package com.example.lazyLoading.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
-class Book {
+@Data
+@Table(name="books")
+public class Book {
     @Id
-    @GeneratedValue
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long id;
 
-    String title;
+    private String title;
 
     @ManyToOne
-    Author author;
+    private Author author;
 }

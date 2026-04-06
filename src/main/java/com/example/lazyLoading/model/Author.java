@@ -1,18 +1,21 @@
 package com.example.lazyLoading.model;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Data
+@Table(name="authors")
 public class Author {
 
     @Id
-    @GeneratedValue
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long id;
 
-    String name;
+    private  String name;
 
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
-    List<Book> books;
+    private List<Book> books;
 
 }
